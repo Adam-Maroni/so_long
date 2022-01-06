@@ -1,4 +1,4 @@
-CC = gcc
+CC = clang
 CFLAGS = -Wall -Werror -Wextra
 LIBFT_PATH = inc/libft
 MINILIBX_PATH = inc/minilibx-linux
