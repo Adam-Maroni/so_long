@@ -6,7 +6,7 @@
 /*   By: amaroni <amaroni@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/05 12:39:57 by amaroni           #+#    #+#             */
-/*   Updated: 2022/01/06 00:13:01 by amaroni          ###   ########.fr       */
+/*   Updated: 2022/01/06 12:41:31 by amaroni          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,7 +85,7 @@ int	ft_is_closed_rectangle(char	**line_array)
 int	ft_is_map_correct(int fd_map)
 {
 	char	**tab_line;
-	int	rt;
+	int		rt;
 
 	tab_line = ft_fd_to_array(fd_map);
 	rt = 0;
@@ -97,10 +97,4 @@ int	ft_is_map_correct(int fd_map)
 		rt = 1;
 	ft_free_array(tab_line);
 	return (rt);
-}
-
-int main(void)
-{
-	printf("TEST\n");
-	return 0;
 }
