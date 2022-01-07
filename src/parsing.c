@@ -6,7 +6,7 @@
 /*   By: amaroni <amaroni@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/05 12:39:57 by amaroni           #+#    #+#             */
-/*   Updated: 2022/01/07 12:54:06 by amaroni          ###   ########.fr       */
+/*   Updated: 2022/01/07 13:36:11 by amaroni          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,6 @@ int	ft_is_closed_rectangle(char	**line_array)
 {
 	char	*first_line;
 	char	*line;
-	int		line_len;
 	int		i;
 
 	i = 0;
@@ -32,12 +31,12 @@ int	ft_is_closed_rectangle(char	**line_array)
 		line = line_array[i];
 		if (i == 0)
 			first_line = line_array[i];
-		line_len = ft_strlen(line);
-		if (line_len <= 0 || line[0] != '1' || line[line_len - 1] != '1')
+		if (ft_strlen(line) <= 0 || line[0] != '1' || line[ft_strlen(line) - 1] != '1')
 			return (0);
 		i++;
 	}
-	if (i <= 1 || ft_strlen(line) != ft_strlen(first_line))
+	if (i <= 1 || ft_strlen(line) <= 1
+		|| ft_strlen(line) != ft_strlen(first_line))
 		return (0);
 	i = 0;
 	while (first_line[i] && line[i])
@@ -62,7 +61,6 @@ void	ft_free_array(char **array)
 	}
 	free(array);
 }
-
 
 /* Should return 1 if map is correct and 0 if not */
 int	ft_is_map_correct(int fd_map)
