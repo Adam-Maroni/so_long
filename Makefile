@@ -11,6 +11,7 @@ INC = inc/ \
 SRC_PATH = src
 SRC = $(addprefix $(SRC_PATH)/, \
       parsing.c \
+      parsing2.c \
       readfile.c \
       main.c \
       )
