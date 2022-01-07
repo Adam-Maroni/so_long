@@ -6,7 +6,7 @@
 /*   By: amaroni <amaroni@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/07 10:20:03 by amaroni           #+#    #+#             */
-/*   Updated: 2022/01/07 10:53:23 by amaroni          ###   ########.fr       */
+/*   Updated: 2022/01/07 13:40:22 by amaroni          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,4 +38,19 @@ char *ft_fd_to_str(int fd)
 	}
 	free(buf);
 	return (str);
+}
+
+void	ft_free_array(char **array)
+{
+	int		i;
+
+	i = 0;
+	if (!array)
+		return ;
+	while (array[i])
+	{
+		free(array[i]);
+		i++;
+	}
+	free(array);
 }
