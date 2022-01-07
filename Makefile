@@ -49,3 +49,5 @@ debug: $(LIBFT) $(MINILIBX) $(OBJ)
 	$(CC) $(FLAGS) $(addprefix -I, $(INC))  $(OBJ) $(LIBFT) $(MINILIBX) -o $(NAME)
 	gdb -x tests/gdbscripts/1.gdb --args ./$(NAME) ./tests/valid_maps/valid0.ber
 
+test_parsing:
+	(cd tests && ./testParsing.sh)
