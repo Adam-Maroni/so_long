@@ -6,44 +6,11 @@
 /*   By: amaroni <amaroni@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/05 12:39:57 by amaroni           #+#    #+#             */
-/*   Updated: 2022/01/06 12:41:31 by amaroni          ###   ########.fr       */
+/*   Updated: 2022/01/07 12:54:06 by amaroni          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
-
-char	**ft_fd_to_array(int fd)
-{
-	char	*line;
-	char	**tab_line;
-	int		i;
-
-	i = 0;
-	tab_line = NULL;
-	line = NULL;
-	if (fd < 0)
-		return (NULL);
-	while (get_next_line(fd, &line) > 0)
-	{
-		tab_line[i] = ft_strdup(line);
-		i++;
-	}
-	return (tab_line);
-}
-
-void	ft_free_array(char **array)
-{
-	int	i;
-
-	i = 0;
-	while (array[i])
-	{
-		free(array[i]);
-		i++;
-	}
-	if (array)
-		free(array);
-}
 
 /*
  * Should return 1 if map is correct and 0 if not.
@@ -66,7 +33,7 @@ int	ft_is_closed_rectangle(char	**line_array)
 		if (i == 0)
 			first_line = line_array[i];
 		line_len = ft_strlen(line);
-		if (line_len <= 0 || line[0] != '1' || line[line_len - 1] != 1)
+		if (line_len <= 0 || line[0] != '1' || line[line_len - 1] != '1')
 			return (0);
 		i++;
 	}
@@ -81,18 +48,41 @@ int	ft_is_closed_rectangle(char	**line_array)
 	return (1);
 }
 
+void	ft_free_array(char **array)
+{
+	int		i;
+
+	i = 0;
+	if (!array)
+		return ;
+	while (array[i])
+	{
+		free(array[i]);
+		i++;
+	}
+	free(array);
+}
+
+
 /* Should return 1 if map is correct and 0 if not */
 int	ft_is_map_correct(int fd_map)
 {
 	char	**tab_line;
 	int		rt;
+	char	*fd_content;
 
-	tab_line = ft_fd_to_array(fd_map);
+	tab_line = NULL;
+	fd_content = ft_fd_to_str(fd_map);
+	if (fd_content)
+	{
+		tab_line = ft_split(fd_content, '\n');
+		free(fd_content);
+	}
 	rt = 0;
-	if (!tab_line)
-		printf("Error, Can't open map or file doesn't exist\n");
+	if (!tab_line || !tab_line[0])
+		printf("Error, Map is empty\n");
 	else if (!ft_is_closed_rectangle(tab_line))
-		printf("Error, Map is not a closed rectangle");
+		printf("Error, Map is not a closed rectangle.\n");
 	else
 		rt = 1;
 	ft_free_array(tab_line);

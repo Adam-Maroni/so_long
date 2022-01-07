@@ -6,7 +6,7 @@
 /*   By: amaroni <amaroni@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/05 12:40:45 by amaroni           #+#    #+#             */
-/*   Updated: 2022/01/05 20:47:25 by amaroni          ###   ########.fr       */
+/*   Updated: 2022/01/07 12:33:31 by amaroni          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@
 # include "mlx.h"
 # include "mlx_int.h"
 
-char	**ft_fd_to_array(int fd);
+char	*ft_fd_to_str(int fd);
 void	ft_free_array(char **array);
 int		ft_is_closed_rectangle(char	**line_array);
 int		ft_is_map_correct(int fd_map);

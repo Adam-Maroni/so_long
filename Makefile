@@ -1,6 +1,6 @@
 NAME = so_long
 CC = clang
-FLAGS = -Wall -Werror -Wextra
+FLAGS = -Wall -Werror -Wextra -g
 LIBFT_PATH = inc/libft
 LIBFT = $(LIBFT_PATH)/libft.a
 MINILIBX_PATH = inc/minilibx-linux
@@ -11,7 +11,7 @@ INC = inc/ \
 SRC_PATH = src
 SRC = $(addprefix $(SRC_PATH)/, \
       parsing.c \
-      get_next_line.c \
+      readfile.c \
       main.c \
       )
 OBJ_PATH = obj
@@ -45,6 +45,7 @@ fclean: clean
 re: fclean all
 
 
-debug:
-	$(CC) -g $(addprefix -I, $(INC))  $(OBJ) -lft -L$(LIBFT_PATH) -lmlx -L$(MINILIBX_PATH) -o $(NAME)
-	gdb 
+debug: $(LIBFT) $(MINILIBX) $(OBJ)
+	$(CC) $(FLAGS) $(addprefix -I, $(INC))  $(OBJ) $(LIBFT) $(MINILIBX) -o $(NAME)
+	gdb -x tests/gdbscripts/1.gdb --args ./$(NAME) ./tests/valid_maps/valid0.ber
+

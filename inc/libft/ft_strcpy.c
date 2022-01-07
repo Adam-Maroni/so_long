@@ -1,26 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strchr.c                                        :+:      :+:    :+:   */
+/*   ft_strcpy.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: amaroni <amaroni@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/11/20 12:10:08 by amaroni           #+#    #+#             */
-/*   Updated: 2022/01/06 19:49:01 by amaroni          ###   ########.fr       */
+/*   Created: 2022/01/06 21:31:41 by amaroni           #+#    #+#             */
+/*   Updated: 2022/01/06 21:31:57 by amaroni          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strchr(char *s, int c)
+char	*ft_strcpy(char *dest, char *src)
 {
-	int	i;
+	size_t	i;
 
 	i = 0;
-	while (s[i] && s[i] != (char)c)
+	while (src[i] != '\0')
+	{
+		dest[i] = src[i];
 		i++;
-	if (s[i] == (char)c)
-		return (s + i);
-	else
-		return (NULL);
+	}
+	dest[i] = '\0';
+	return (dest);
 }
