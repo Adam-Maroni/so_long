@@ -14,6 +14,21 @@ define plist
 	end
 end
 
-b ft_is_closed_rectangle
-#b testMain.c:30
+define pmlximg
+	printf "img = %p\n", $arg0->img
+	printf "addr = %p\n", $arg0->addr
+	printf "bits_per_pixel = %d\n", $arg0->bits_per_pixel
+	printf "line_length = %d\n", $arg0->line_length
+	printf "endian = %d\n", $arg0->endian
+end
+
+define pmlxdata
+	printf "mlx= %p\n",$arg0->mlx
+	printf "mlx_win= %p\n",$arg0->mlx_win
+	printf "img= %p\n",$arg0->img
+	pmlximg $arg0->img
+end
+
+
+b ft_create_mlx_data
 run

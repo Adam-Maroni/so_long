@@ -6,7 +6,7 @@
 /*   By: amaroni <amaroni@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/05 12:40:45 by amaroni           #+#    #+#             */
-/*   Updated: 2022/01/07 16:14:47 by amaroni          ###   ########.fr       */
+/*   Updated: 2022/01/08 13:40:49 by amaroni          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,22 @@
 # include "libft.h"
 # include "mlx.h"
 # include "mlx_int.h"
+
+typedef struct s_data_img
+{
+	void	*img;
+	char	*addr;
+	int		bits_per_pixel;
+	int		line_length;
+	int		endian;
+}			t_data_img;
+
+typedef struct s_data_mlx
+{
+	void	*mlx;
+	void	*mlx_win;
+	t_data_img	*img;
+}	t_data_mlx;
 
 /*	parsing.c	*/
 int		ft_scan_map_and_print_error(char **tab_line);
@@ -29,4 +45,10 @@ int		ft_is_there_nonvalid_char(char **line_array);
 /*	readfile.c	*/
 char	*ft_fd_to_str(int fd);
 void	ft_free_array(char **array);
+/*	myMlx.c		*/
+void	my_mlx_pixel_put(t_data_img *data, int x, int y, int color);
+void	ft_free_img_data(t_data_img *mlx_img);
+void	ft_free_mlx_data(t_data_mlx *mlx_data);
+void	ft_display_image(t_data_mlx *mlx_window);
+t_data_mlx	*ft_create_mlx_data(int width, int height, char *title);
 #endif

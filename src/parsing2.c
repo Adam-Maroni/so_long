@@ -6,7 +6,7 @@
 /*   By: amaroni <amaroni@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/07 16:13:26 by amaroni           #+#    #+#             */
-/*   Updated: 2022/01/07 16:13:34 by amaroni          ###   ########.fr       */
+/*   Updated: 2022/01/08 11:23:23 by amaroni          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -111,4 +111,3 @@ int	ft_is_there_nonvalid_char(char **line_array)
 	}
 	return (0);
 }
-
