@@ -30,5 +30,5 @@ define pmlxdata
 end
 
 
-b ft_create_mlx_data
+b main
 run

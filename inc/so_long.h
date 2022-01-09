@@ -6,7 +6,7 @@
 /*   By: amaroni <amaroni@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/05 12:40:45 by amaroni           #+#    #+#             */
-/*   Updated: 2022/01/08 13:40:49 by amaroni          ###   ########.fr       */
+/*   Updated: 2022/01/09 12:55:10 by amaroni          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,26 +29,25 @@ typedef struct s_data_img
 
 typedef struct s_data_mlx
 {
-	void	*mlx;
-	void	*mlx_win;
-	t_data_img	*img;
+	void			*mlx;
+	void			*mlx_win;
+	t_data_img		*img;
 }	t_data_mlx;
 
 /*	parsing.c	*/
-int		ft_scan_map_and_print_error(char **tab_line);
-int		ft_is_map_correct(int fd_map);
+int				ft_scan_map_and_print_error(char **tab_line);
+int				ft_is_map_correct(int fd_map);
 /*	parsing2.c	*/
-int		ft_is_char_valid(char c);
-int		ft_is_closed_rectangle(char	**line_array);
-int		ft_is_character_among_array(char **line_array, int c);
-int		ft_is_there_nonvalid_char(char **line_array);
+int				ft_is_char_valid(char c);
+int				ft_is_closed_rectangle(char	**line_array);
+int				ft_is_character_among_array(char **line_array, int c);
+int				ft_is_there_nonvalid_char(char **line_array);
 /*	readfile.c	*/
-char	*ft_fd_to_str(int fd);
-void	ft_free_array(char **array);
+char			*ft_fd_to_str(int fd);
+void			ft_free_array(char **array);
 /*	myMlx.c		*/
-void	my_mlx_pixel_put(t_data_img *data, int x, int y, int color);
-void	ft_free_img_data(t_data_img *mlx_img);
-void	ft_free_mlx_data(t_data_mlx *mlx_data);
-void	ft_display_image(t_data_mlx *mlx_window);
-t_data_mlx	*ft_create_mlx_data(int width, int height, char *title);
+void			my_mlx_pixel_put(t_data_img *data_img, int x, int y, int color);
+t_data_mlx		*ft_create_mlx_data(int width, int height, char *title);
+void			ft_close_mlx_data(t_data_mlx *mlx_data);
+void			ft_display_image(t_data_mlx *mlx_data);
 #endif
