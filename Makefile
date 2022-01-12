@@ -22,8 +22,6 @@ SRC = $(addprefix $(SRC_PATH)/, \
 OBJ_PATH = obj
 OBJ = $(addprefix $(OBJ_PATH)/, $(notdir $(SRC:.c=.o)))
 
-
-
 all: $(NAME)
 
 $(NAME): $(LIBFT) $(MINILIBX)  $(OBJ)
@@ -56,3 +54,4 @@ debug: $(LIBFT) $(MINILIBX) $(OBJ)
 
 test_parsing:
 	(cd tests && ./testParsing.sh)
+

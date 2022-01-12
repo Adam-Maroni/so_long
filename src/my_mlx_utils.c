@@ -6,11 +6,12 @@
 /*   By: amaroni <amaroni@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/08 10:25:36 by amaroni           #+#    #+#             */
-/*   Updated: 2022/01/12 15:06:40 by amaroni          ###   ########.fr       */
+/*   Updated: 2022/01/12 15:24:50 by amaroni          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
+#define	MAX_IMAGES 10
 
 /*
  * Generic function to draw pixel
@@ -27,7 +28,7 @@ void	my_mlx_pixel_put(t_data_img *data_img, int x, int y, int color)
 
 /*
  * Create the display and window for the game.
- * As well as an array of 9 images.
+ * As well as an array of MAX_IMAGES - 1 images.
  */
 t_data_mlx	*ft_create_mlx_data(int width, int height, char *title)
 {
@@ -38,7 +39,7 @@ t_data_mlx	*ft_create_mlx_data(int width, int height, char *title)
 	rt->mlx = mlx_init();
 	rt->mlx_win = mlx_new_window(rt->mlx, width, height, title);
 	i = -1;
-	while (++i < 10)
+	while (++i < MAX_IMAGES)
 		rt->img_array[i] = NULL;
 	return (rt);
 }
