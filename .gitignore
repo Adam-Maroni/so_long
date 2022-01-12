@@ -1,3 +1,7 @@
 *.swp
 *.o
 so_long
+*.gen
+*.gen
+*.gen
+*.a

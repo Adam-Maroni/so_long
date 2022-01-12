@@ -6,7 +6,7 @@
 /*   By: amaroni <amaroni@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/06 12:41:24 by amaroni           #+#    #+#             */
-/*   Updated: 2022/01/07 12:48:35 by amaroni          ###   ########.fr       */
+/*   Updated: 2022/01/11 17:23:41 by amaroni          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ int	main(int argc, char **argv)
 	else
 		correct = ft_is_map_correct(fd_map);
 	if (correct)
-		printf("Map is correct\n");
+		ft_so_long(fd_map);
 	close(fd_map);
 	return (0);
 }

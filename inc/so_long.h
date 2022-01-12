@@ -6,7 +6,7 @@
 /*   By: amaroni <amaroni@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/05 12:40:45 by amaroni           #+#    #+#             */
-/*   Updated: 2022/01/09 12:55:10 by amaroni          ###   ########.fr       */
+/*   Updated: 2022/01/12 09:41:52 by amaroni          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ typedef struct s_data_mlx
 {
 	void			*mlx;
 	void			*mlx_win;
-	t_data_img		*img;
+	t_data_img		*img_array[10];
 }	t_data_mlx;
 
 /*	parsing.c	*/
@@ -48,6 +48,12 @@ void			ft_free_array(char **array);
 /*	myMlx.c		*/
 void			my_mlx_pixel_put(t_data_img *data_img, int x, int y, int color);
 t_data_mlx		*ft_create_mlx_data(int width, int height, char *title);
+t_data_img		*ft_create_new_image(void *mlx, int width, int height);
+void			ft_add_image(t_data_mlx *mlx_data, t_data_img *new_img);
 void			ft_close_mlx_data(t_data_mlx *mlx_data);
-void			ft_display_image(t_data_mlx *mlx_data);
+void			ft_display_mlx_image(t_data_mlx *mlx_data, t_data_img *img, int posx, int posy);
 #endif
+
+
+
+
