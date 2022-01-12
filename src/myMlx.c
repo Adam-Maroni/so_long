@@ -6,7 +6,7 @@
 /*   By: amaroni <amaroni@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/08 10:25:36 by amaroni           #+#    #+#             */
-/*   Updated: 2022/01/12 10:41:40 by amaroni          ###   ########.fr       */
+/*   Updated: 2022/01/12 14:54:27 by amaroni          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,14 +43,53 @@ t_data_mlx	*ft_create_mlx_data(int width, int height, char *title)
 	return (rt);
 }
 
-t_data_img	*ft_create_new_image(void *mlx, int width, int height)
+/*
+ * DESTROY AND FREE MLX_IMG
+ */
+void	ft_close_mlx_img(void *mlx, t_data_img *img)
+{
+	if (!img)
+		return ;
+	mlx_destroy_image(mlx, img->img);
+	if (img->img_width)
+		free(img->img_width);
+	if (img->img_height)
+		free(img->img_height);
+	img->img = NULL;
+	img->addr = NULL;
+	img->img_width = NULL;
+	img->img_height = NULL;
+	free(img);
+}
+
+/*
+ * If xpm_filepath == NULL 
+ * then mlx_new_image
+ * else
+ * mlx_xpm_file_to_image
+ */
+t_data_img	*ft_create_new_image(void *mlx, char *xpm_filepath)
 {
 	t_data_img	*new_img;
 
-	if (!mlx || width <= 0 || height <= 0)
+	if (!mlx)
 		return (NULL);
 	new_img = (t_data_img *)ft_calloc(sizeof(t_data_img), 1);
-	new_img->img = mlx_new_image(mlx, width, height);
+	if (!new_img)
+		return (NULL);
+	new_img->img_height = (int *)ft_calloc(sizeof(int), 1);
+	new_img->img_width = (int *)ft_calloc(sizeof(int), 1);
+	if (!new_img->img_width || !new_img->img_height)
+	{
+		ft_close_mlx_img(mlx, new_img);
+		return (NULL);
+	}
+	if (!xpm_filepath)
+		new_img->img = mlx_new_image(mlx,
+				*new_img->img_width, *new_img->img_height);
+	else
+		new_img->img = mlx_xpm_file_to_image(mlx, xpm_filepath,
+				new_img->img_width, new_img->img_height);
 	new_img->addr = mlx_get_data_addr(new_img->img, &(new_img->bits_per_pixel),
 			&(new_img->line_length), &(new_img->endian));
 	return (new_img);
@@ -59,7 +98,8 @@ t_data_img	*ft_create_new_image(void *mlx, int width, int height)
 /*
  * Add an image to a display
  */
-void	ft_add_image(t_data_mlx *mlx_data, t_data_img *new_img)
+void	ft_add_and_display_img(t_data_mlx *mlx_data, t_data_img *new_img,
+		int posx, int posy)
 {
 	int	i;
 
@@ -69,10 +109,12 @@ void	ft_add_image(t_data_mlx *mlx_data, t_data_img *new_img)
 	while ((t_data_img *)mlx_data->img_array[i])
 		i++;
 	mlx_data->img_array[i] = new_img;
+	mlx_put_image_to_window(mlx_data->mlx, mlx_data->mlx_win,
+		mlx_data->img_array[i]->img, posx, posy);
 }
 
 /*
- * CLOSE AND FREE MLX
+ * DESTROY AND FREE MLX DATA
  */
 void	ft_close_mlx_data(t_data_mlx *mlx_data)
 {
@@ -83,8 +125,7 @@ void	ft_close_mlx_data(t_data_mlx *mlx_data)
 		return ;
 	while (mlx_data->img_array[i])
 	{
-		mlx_destroy_image(mlx_data->mlx, mlx_data->img_array[i]->img);
-		free(mlx_data->img_array[i]);
+		ft_close_mlx_img(mlx_data->mlx, mlx_data->img_array[i]);
 		mlx_data->img_array[i] = NULL;
 		i++;
 	}
@@ -98,17 +139,4 @@ void	ft_close_mlx_data(t_data_mlx *mlx_data)
 	mlx_data->mlx_win = NULL;
 	mlx_data->mlx = NULL;
 	free(mlx_data);
-}
-
-/*
- * Put an image to the window
- * posx and posy are the coordinate on window
- * where the origin of image should be put
- */
-void	ft_display_mlx_img(t_data_mlx *mlx_data, t_data_img *img,
-		int posx, int posy)
-{
-	mlx_put_image_to_window(mlx_data->mlx,
-		mlx_data->mlx_win, img, posx, posy);
-	mlx_loop(mlx_data->mlx);
 }

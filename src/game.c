@@ -6,7 +6,7 @@
 /*   By: amaroni <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/11 17:22:21 by amaroni           #+#    #+#             */
-/*   Updated: 2022/01/12 11:24:23 by amaroni          ###   ########.fr       */
+/*   Updated: 2022/01/12 14:37:17 by amaroni          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,6 +52,9 @@ void	ft_start_game(int fd_map)
 
 	mlx_data = ft_create_mlx_data(1531, 980, "so_long");
 	exit_struct = ft_init_exit_struct(fd_map, mlx_data, 0);
+	ft_add_and_display_img(mlx_data,
+		ft_create_new_image(mlx_data->mlx, "./assets/ocean.xpm"),
+		0, 0);
 	mlx_hook(mlx_data->mlx_win, 17, 0L, ft_exit_game, exit_struct);
 	mlx_loop(mlx_data->mlx);
 	ft_exit_game(exit_struct);

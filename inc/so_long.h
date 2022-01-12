@@ -6,7 +6,7 @@
 /*   By: amaroni <amaroni@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/05 12:40:45 by amaroni           #+#    #+#             */
-/*   Updated: 2022/01/12 11:30:37 by amaroni          ###   ########.fr       */
+/*   Updated: 2022/01/12 15:01:52 by amaroni          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,8 @@ typedef struct s_data_img
 	int		bits_per_pixel;
 	int		line_length;
 	int		endian;
+	int		*img_width;
+	int		*img_height;
 }			t_data_img;
 
 typedef struct s_data_mlx
@@ -52,17 +54,17 @@ int				ft_is_there_nonvalid_char(char **line_array);
 /*	readfile.c	*/
 char			*ft_fd_to_str(int fd);
 void			ft_free_array(char **array);
-/*	myMlx.c		*/
-void			my_mlx_pixel_put(t_data_img *data_img, int x, int y, int color);
-t_data_mlx		*ft_create_mlx_data(int width, int height, char *title);
-t_data_img		*ft_create_new_image(void *mlx, int width, int height);
-void			ft_add_image(t_data_mlx *mlx_data, t_data_img *new_img);
-void			ft_close_mlx_data(t_data_mlx *mlx_data);
-void			ft_display_mlx_img(t_data_mlx *mlx_data, t_data_img *img,
-					int posx, int posy);
 /*	game.c		*/
 t_exit			*ft_init_exit_struct(int fd_map,
 					t_data_mlx *mlx_data, int exit_code);
 int				ft_exit_game(t_exit *exit_struct);
 void			ft_start_game(int fd_map);
+/*	myMlx.c		*/
+void			my_mlx_pixel_put(t_data_img *data_img, int x, int y, int color);
+t_data_mlx		*ft_create_mlx_data(int width, int height, char *title);
+void			ft_close_mlx_img(void *mlx, t_data_img *img);
+t_data_img		*ft_create_new_image(void *mlx, char *xpm_filepath);
+void			ft_add_and_display_img(t_data_mlx *mlx_data,
+					t_data_img *new_img, int posx, int posy);
+void			ft_close_mlx_data(t_data_mlx *mlx_data);
 #endif

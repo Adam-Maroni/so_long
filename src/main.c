@@ -6,7 +6,7 @@
 /*   By: amaroni <amaroni@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/06 12:41:24 by amaroni           #+#    #+#             */
-/*   Updated: 2022/01/12 10:21:52 by amaroni          ###   ########.fr       */
+/*   Updated: 2022/01/12 14:19:37 by amaroni          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,8 @@ int	main(int argc, char **argv)
 	if (fd_map == -1)
 	{
 		printf("Error, Can't open map or file doesn't exist\n");
-		ft_exit_game(fd_map, NULL, 1);
+		close (fd_map);
+		return (1);
 	}
 	if (ft_is_map_correct(fd_map))
 		ft_start_game(fd_map);

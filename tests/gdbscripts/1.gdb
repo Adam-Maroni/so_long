@@ -30,7 +30,5 @@ define pmlxdata
 end
 
 
-b main
-b ft_start_game
+b ft_add_and_display_img
 run
-c
