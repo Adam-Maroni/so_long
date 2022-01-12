@@ -14,7 +14,8 @@ SRC = $(addprefix $(SRC_PATH)/, \
       parsing.c \
       parsing2.c \
       readfile.c \
-      myMlx.c \
+      my_mlx_utils.c \
+      my_mlx_utils2.c \
       game.c \
       main.c \
       )

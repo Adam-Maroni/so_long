@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   myMlx.c                                            :+:      :+:    :+:   */
+/*   my_mlx_utils.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: amaroni <amaroni@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/08 10:25:36 by amaroni           #+#    #+#             */
-/*   Updated: 2022/01/12 14:54:27 by amaroni          ###   ########.fr       */
+/*   Updated: 2022/01/12 15:06:40 by amaroni          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,25 +41,6 @@ t_data_mlx	*ft_create_mlx_data(int width, int height, char *title)
 	while (++i < 10)
 		rt->img_array[i] = NULL;
 	return (rt);
-}
-
-/*
- * DESTROY AND FREE MLX_IMG
- */
-void	ft_close_mlx_img(void *mlx, t_data_img *img)
-{
-	if (!img)
-		return ;
-	mlx_destroy_image(mlx, img->img);
-	if (img->img_width)
-		free(img->img_width);
-	if (img->img_height)
-		free(img->img_height);
-	img->img = NULL;
-	img->addr = NULL;
-	img->img_width = NULL;
-	img->img_height = NULL;
-	free(img);
 }
 
 /*
@@ -111,32 +92,4 @@ void	ft_add_and_display_img(t_data_mlx *mlx_data, t_data_img *new_img,
 	mlx_data->img_array[i] = new_img;
 	mlx_put_image_to_window(mlx_data->mlx, mlx_data->mlx_win,
 		mlx_data->img_array[i]->img, posx, posy);
-}
-
-/*
- * DESTROY AND FREE MLX DATA
- */
-void	ft_close_mlx_data(t_data_mlx *mlx_data)
-{
-	int	i;
-
-	i = 0;
-	if (!mlx_data)
-		return ;
-	while (mlx_data->img_array[i])
-	{
-		ft_close_mlx_img(mlx_data->mlx, mlx_data->img_array[i]);
-		mlx_data->img_array[i] = NULL;
-		i++;
-	}
-	if (mlx_data->mlx_win)
-		mlx_destroy_window(mlx_data->mlx, mlx_data->mlx_win);
-	if (mlx_data->mlx)
-	{
-		mlx_destroy_display(mlx_data->mlx);
-		free(mlx_data->mlx);
-	}
-	mlx_data->mlx_win = NULL;
-	mlx_data->mlx = NULL;
-	free(mlx_data);
 }
