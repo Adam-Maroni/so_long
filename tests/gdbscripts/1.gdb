@@ -31,4 +31,6 @@ end
 
 
 b main
+b ft_start_game
 run
+c

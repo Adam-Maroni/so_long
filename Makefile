@@ -15,7 +15,8 @@ SRC = $(addprefix $(SRC_PATH)/, \
       parsing2.c \
       readfile.c \
       myMlx.c \
-      testMain.c \
+      game.c \
+      main.c \
       )
 OBJ_PATH = obj
 OBJ = $(addprefix $(OBJ_PATH)/, $(notdir $(SRC:.c=.o)))

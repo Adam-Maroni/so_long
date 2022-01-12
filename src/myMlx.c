@@ -6,7 +6,7 @@
 /*   By: amaroni <amaroni@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/08 10:25:36 by amaroni           #+#    #+#             */
-/*   Updated: 2022/01/12 09:42:40 by amaroni          ###   ########.fr       */
+/*   Updated: 2022/01/12 10:41:40 by amaroni          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,14 +78,15 @@ void	ft_close_mlx_data(t_data_mlx *mlx_data)
 {
 	int	i;
 
-	i = -1;
+	i = 0;
 	if (!mlx_data)
 		return ;
-	while (++i < 10 && mlx_data->img_array[i])
+	while (mlx_data->img_array[i])
 	{
 		mlx_destroy_image(mlx_data->mlx, mlx_data->img_array[i]->img);
 		free(mlx_data->img_array[i]);
 		mlx_data->img_array[i] = NULL;
+		i++;
 	}
 	if (mlx_data->mlx_win)
 		mlx_destroy_window(mlx_data->mlx, mlx_data->mlx_win);
@@ -104,7 +105,8 @@ void	ft_close_mlx_data(t_data_mlx *mlx_data)
  * posx and posy are the coordinate on window
  * where the origin of image should be put
  */
-void	ft_display_mlx_image(t_data_mlx *mlx_data, t_data_img *img, int posx, int posy)
+void	ft_display_mlx_img(t_data_mlx *mlx_data, t_data_img *img,
+		int posx, int posy)
 {
 	mlx_put_image_to_window(mlx_data->mlx,
 		mlx_data->mlx_win, img, posx, posy);

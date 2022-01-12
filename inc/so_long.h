@@ -6,7 +6,7 @@
 /*   By: amaroni <amaroni@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/05 12:40:45 by amaroni           #+#    #+#             */
-/*   Updated: 2022/01/12 09:41:52 by amaroni          ###   ########.fr       */
+/*   Updated: 2022/01/12 11:30:37 by amaroni          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,13 @@ typedef struct s_data_mlx
 	t_data_img		*img_array[10];
 }	t_data_mlx;
 
+typedef struct s_exit
+{
+	t_data_mlx	*mlx_data;
+	int			fd_map;
+	int			exit_code;
+}	t_exit;
+
 /*	parsing.c	*/
 int				ft_scan_map_and_print_error(char **tab_line);
 int				ft_is_map_correct(int fd_map);
@@ -51,9 +58,11 @@ t_data_mlx		*ft_create_mlx_data(int width, int height, char *title);
 t_data_img		*ft_create_new_image(void *mlx, int width, int height);
 void			ft_add_image(t_data_mlx *mlx_data, t_data_img *new_img);
 void			ft_close_mlx_data(t_data_mlx *mlx_data);
-void			ft_display_mlx_image(t_data_mlx *mlx_data, t_data_img *img, int posx, int posy);
+void			ft_display_mlx_img(t_data_mlx *mlx_data, t_data_img *img,
+					int posx, int posy);
+/*	game.c		*/
+t_exit			*ft_init_exit_struct(int fd_map,
+					t_data_mlx *mlx_data, int exit_code);
+int				ft_exit_game(t_exit *exit_struct);
+void			ft_start_game(int fd_map);
 #endif
-
-
-
-
