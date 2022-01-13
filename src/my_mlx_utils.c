@@ -6,7 +6,7 @@
 /*   By: amaroni <amaroni@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/08 10:25:36 by amaroni           #+#    #+#             */
-/*   Updated: 2022/01/12 15:24:50 by amaroni          ###   ########.fr       */
+/*   Updated: 2022/01/13 07:57:39 by amaroni          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,8 +80,7 @@ t_data_img	*ft_create_new_image(void *mlx, char *xpm_filepath)
 /*
  * Add an image to a display
  */
-void	ft_add_and_display_img(t_data_mlx *mlx_data, t_data_img *new_img,
-		int posx, int posy)
+void	ft_add_img(t_data_mlx *mlx_data, t_data_img *new_img)
 {
 	int	i;
 
@@ -91,6 +90,4 @@ void	ft_add_and_display_img(t_data_mlx *mlx_data, t_data_img *new_img,
 	while ((t_data_img *)mlx_data->img_array[i])
 		i++;
 	mlx_data->img_array[i] = new_img;
-	mlx_put_image_to_window(mlx_data->mlx, mlx_data->mlx_win,
-		mlx_data->img_array[i]->img, posx, posy);
 }

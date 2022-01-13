@@ -6,7 +6,7 @@
 /*   By: amaroni <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/11 17:22:21 by amaroni           #+#    #+#             */
-/*   Updated: 2022/01/12 17:33:10 by amaroni          ###   ########.fr       */
+/*   Updated: 2022/01/13 07:58:52 by amaroni          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,9 +54,6 @@ void	ft_start_game(int fd_map)
 
 	mlx_data = ft_create_mlx_data(WINDOW_WIDTH, WINDOW_HEIGHT, "so_long");
 	exit_struct = ft_init_exit_struct(fd_map, mlx_data, 0);
-	ft_add_and_display_img(mlx_data,
-		ft_create_new_image(mlx_data->mlx, "./assets/ocean.xpm"),
-		0, 0);
 	mlx_hook(mlx_data->mlx_win, 17, 0L, ft_exit_game, exit_struct);
 	mlx_loop(mlx_data->mlx);
 	ft_exit_game(exit_struct);
@@ -71,11 +68,10 @@ void	ft_start_game(int fd_map)
  * 2 = 'P' (dolphin)
  * 3 = 'E' (pannel)
  * 4 = 'C' (star)
- */
 int	ft_charmap_to_array_index(char charmap)
 {
 	if (charmap == '1')
-		return (1)
+		return (1);
 	if (charmap == 'P')
 		return (2);
 	if (charmap == 'E')
@@ -83,4 +79,14 @@ int	ft_charmap_to_array_index(char charmap)
 	if (charmap == 'C')
 		return (4);
 	return (-1);
+}
+
+
+	mlx_put_image_to_window(mlx_data->mlx, mlx_data->mlx_win,
+		mlx_data->img_array[i]->img, posx, posy);
+ */
+
+void	ft_init_scene()
+{
+	
 }
