@@ -6,7 +6,7 @@
 /*   By: amaroni <amaroni@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/05 12:40:45 by amaroni           #+#    #+#             */
-/*   Updated: 2022/01/13 07:57:56 by amaroni          ###   ########.fr       */
+/*   Updated: 2022/01/13 09:04:25 by amaroni          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,12 +36,12 @@ typedef struct s_data_mlx
 	t_data_img		*img_array[10];
 }	t_data_mlx;
 
-typedef struct s_exit
+typedef struct s_global
 {
 	t_data_mlx	*mlx_data;
 	int			fd_map;
 	int			exit_code;
-}	t_exit;
+}	t_global;
 
 /*	parsing.c	*/
 int				ft_scan_map_and_print_error(char **tab_line);
@@ -57,15 +57,17 @@ void			ft_free_array(char **array);
 int				ft_count_colums(int fd_map);
 int				ft_count_rows(int fd_map);
 /*	game.c		*/
-t_exit			*ft_init_exit_struct(int fd_map,
+t_global		*ft_init_global_struct(int fd_map,
 					t_data_mlx *mlx_data, int exit_code);
-int				ft_exit_game(t_exit *exit_struct);
+int				ft_exit_game(t_global *exit_struct);
 void			ft_start_game(int fd_map);
 /*	my_mlx_utils.c		*/
 void			my_mlx_pixel_put(t_data_img *data_img, int x, int y, int color);
 t_data_mlx		*ft_create_mlx_data(int width, int height, char *title);
 t_data_img		*ft_create_new_image(void *mlx, char *xpm_filepath);
-void			ft_add_img(t_data_mlx *mlx_data, t_data_img *new_img);
+void			ft_add_img(t_data_mlx *mlx_data, t_data_img *new_img,
+					int index);
+void			ft_charge_all_img(t_data_mlx *mlx_data);
 /*	my_mlx_utils2.c		*/
 void			ft_close_mlx_img(void *mlx, t_data_img *img);
 void			ft_close_mlx_data(t_data_mlx *mlx_data);

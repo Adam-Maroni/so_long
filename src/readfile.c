@@ -6,7 +6,7 @@
 /*   By: amaroni <amaroni@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/07 10:20:03 by amaroni           #+#    #+#             */
-/*   Updated: 2022/01/12 17:00:04 by amaroni          ###   ########.fr       */
+/*   Updated: 2022/01/13 08:45:16 by amaroni          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,7 @@ void	ft_free_array(char **array)
  */
 int	ft_count_colums(int fd_map)
 {
-	int	i;
+	int		i;
 	char	*str;
 
 	i = 0;
@@ -78,8 +78,8 @@ int	ft_count_colums(int fd_map)
  */
 int	ft_count_rows(int fd_map)
 {
-	int	i;
-	int	row;
+	int		i;
+	int		row;
 	char	*str;
 
 	i = 0;
