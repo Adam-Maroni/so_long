@@ -30,5 +30,5 @@ define pmlxdata
 end
 
 
-b ft_add_and_display_img
+b ft_fd_to_str
 run

@@ -6,7 +6,7 @@
 /*   By: amaroni <amaroni@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/05 12:40:45 by amaroni           #+#    #+#             */
-/*   Updated: 2022/01/13 09:04:25 by amaroni          ###   ########.fr       */
+/*   Updated: 2022/01/13 10:52:18 by amaroni          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,13 +39,13 @@ typedef struct s_data_mlx
 typedef struct s_global
 {
 	t_data_mlx	*mlx_data;
-	int			fd_map;
+	char		**fd_content;
 	int			exit_code;
 }	t_global;
 
 /*	parsing.c	*/
 int				ft_scan_map_and_print_error(char **tab_line);
-int				ft_is_map_correct(int fd_map);
+int				ft_is_map_correct(char	**fd_content);
 /*	parsing2.c	*/
 int				ft_is_char_valid(char c);
 int				ft_is_closed_rectangle(char	**line_array);
@@ -56,11 +56,12 @@ char			*ft_fd_to_str(int fd);
 void			ft_free_array(char **array);
 int				ft_count_colums(int fd_map);
 int				ft_count_rows(int fd_map);
+char			**ft_fd_to_split_lines(int fd_map);
 /*	game.c		*/
-t_global		*ft_init_global_struct(int fd_map,
+t_global		*ft_init_global_struct(char **fd_content,
 					t_data_mlx *mlx_data, int exit_code);
 int				ft_exit_game(t_global *exit_struct);
-void			ft_start_game(int fd_map);
+void			ft_start_game(char **fd_content);
 /*	my_mlx_utils.c		*/
 void			my_mlx_pixel_put(t_data_img *data_img, int x, int y, int color);
 t_data_mlx		*ft_create_mlx_data(int width, int height, char *title);

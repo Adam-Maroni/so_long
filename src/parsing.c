@@ -6,7 +6,7 @@
 /*   By: amaroni <amaroni@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/05 12:39:57 by amaroni           #+#    #+#             */
-/*   Updated: 2022/01/07 16:18:32 by amaroni          ###   ########.fr       */
+/*   Updated: 2022/01/13 10:41:13 by amaroni          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,20 +36,12 @@ int	ft_scan_map_and_print_error(char **tab_line)
 }
 
 /* Should return 1 if map is correct and 0 if not */
-int	ft_is_map_correct(int fd_map)
+int	ft_is_map_correct(char **fd_content)
 {
-	char	**tab_line;
 	int		rt;
-	char	*fd_content;
 
-	tab_line = NULL;
-	fd_content = ft_fd_to_str(fd_map);
-	if (fd_content)
-	{
-		tab_line = ft_split(fd_content, '\n');
-		free(fd_content);
-	}
-	rt = !ft_scan_map_and_print_error(tab_line);
-	ft_free_array(tab_line);
+	if (!fd_content)
+		return (0);
+	rt = !ft_scan_map_and_print_error(fd_content);
 	return (rt);
 }

@@ -6,7 +6,7 @@
 /*   By: amaroni <amaroni@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/07 10:20:03 by amaroni           #+#    #+#             */
-/*   Updated: 2022/01/13 08:45:16 by amaroni          ###   ########.fr       */
+/*   Updated: 2022/01/13 10:54:27 by amaroni          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,4 +95,15 @@ int	ft_count_rows(int fd_map)
 	}
 	free(str);
 	return (row);
+}
+
+char	**ft_fd_to_split_lines(int fd_map)
+{
+	char	*str;
+	char	**fd_content;
+
+	str = ft_fd_to_str(fd_map);
+	fd_content = ft_split(str, '\n');
+	free(str);
+	return (fd_content);
 }
