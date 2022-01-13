@@ -6,7 +6,7 @@
 /*   By: amaroni <amaroni@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/05 12:40:45 by amaroni           #+#    #+#             */
-/*   Updated: 2022/01/13 10:52:18 by amaroni          ###   ########.fr       */
+/*   Updated: 2022/01/13 16:57:22 by amaroni          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,8 +54,8 @@ int				ft_is_there_nonvalid_char(char **line_array);
 /*	readfile.c	*/
 char			*ft_fd_to_str(int fd);
 void			ft_free_array(char **array);
-int				ft_count_colums(int fd_map);
-int				ft_count_rows(int fd_map);
+int				ft_count_colums(char **fd_content);
+int				ft_count_rows(char **fd_content);
 char			**ft_fd_to_split_lines(int fd_map);
 /*	game.c		*/
 t_global		*ft_init_global_struct(char **fd_content,

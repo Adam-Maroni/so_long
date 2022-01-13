@@ -6,7 +6,7 @@
 /*   By: amaroni <amaroni@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/07 10:20:03 by amaroni           #+#    #+#             */
-/*   Updated: 2022/01/13 10:54:27 by amaroni          ###   ########.fr       */
+/*   Updated: 2022/01/13 16:59:27 by amaroni          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,43 +58,29 @@ void	ft_free_array(char **array)
 /*
  * Count the number of column inside a fd.
  */
-int	ft_count_colums(int fd_map)
+int	ft_count_colums(char **fd_content)
 {
 	int		i;
-	char	*str;
 
 	i = 0;
-	str = ft_fd_to_str(fd_map);
-	if (!str)
+	if (!fd_content)
 		return (0);
-	while (str[i] && str[i] != '\n')
-		i++;
-	free(str);
-	return (i);
+	return (ft_strlen(fd_content[0]));
 }
 
 /*
  * Count the number of rows inside a fd.
  */
-int	ft_count_rows(int fd_map)
+int	ft_count_rows(char **fd_content)
 {
 	int		i;
-	int		row;
-	char	*str;
 
 	i = 0;
-	row = 0;
-	str = ft_fd_to_str(fd_map);
-	if (!str)
+	if (!fd_content)
 		return (0);
-	while (str[i])
-	{
-		if (str[i] == '\n')
-			row++;
+	while (fd_content[i])
 		i++;
-	}
-	free(str);
-	return (row);
+	return (i);
 }
 
 char	**ft_fd_to_split_lines(int fd_map)
