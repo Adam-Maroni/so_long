@@ -18,6 +18,7 @@ SRC = $(addprefix $(SRC_PATH)/, \
       my_mlx_utils2.c \
       scene.c \
       game.c \
+      events_handler.c \
       main.c \
       )
 OBJ_PATH = obj

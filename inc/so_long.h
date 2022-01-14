@@ -6,7 +6,7 @@
 /*   By: amaroni <amaroni@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/05 12:40:45 by amaroni           #+#    #+#             */
-/*   Updated: 2022/01/14 15:50:35 by amaroni          ###   ########.fr       */
+/*   Updated: 2022/01/14 18:05:36 by amaroni          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,6 +69,10 @@ void			ft_start_game(char **fd_content);
 void			ft_event_handler(t_global *mlx_global);
 t_global		*ft_init_global_struct(char **fd_content,
 					t_data_mlx *mlx_data, int exit_code);
+/*	events_handler.c	*/
+void			ft_player_move_up(t_global *mlx_global);
+int				key_hook(int key_code, t_global *mlx_global);
+void			ft_event_handler(t_global *mlx_global);
 /*	scene.c		*/
 void			ft_map_to_scene(t_global *mlx_global, char map_element,
 					int x, int y);
