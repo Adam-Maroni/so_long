@@ -6,7 +6,7 @@
 /*   By: amaroni <amaroni@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/05 12:40:45 by amaroni           #+#    #+#             */
-/*   Updated: 2022/01/14 08:53:49 by amaroni          ###   ########.fr       */
+/*   Updated: 2022/01/14 15:50:35 by amaroni          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,15 +63,16 @@ int				ft_count_colums(char **fd_content);
 int				ft_count_rows(char **fd_content);
 char			**ft_fd_to_split_lines(int fd_map);
 /*	game.c		*/
+int				ft_exit_game(t_global *mlx_global);
+int				key_hook(int key_code, t_global *mlx_global);
+void			ft_start_game(char **fd_content);
+void			ft_event_handler(t_global *mlx_global);
 t_global		*ft_init_global_struct(char **fd_content,
 					t_data_mlx *mlx_data, int exit_code);
-int				ft_exit_game(t_global *mlx_global);
-void			ft_start_game(char **fd_content);
 /*	scene.c		*/
 void			ft_map_to_scene(t_global *mlx_global, char map_element,
 					int x, int y);
-int				ft_exit_game(t_global *exit_struct);
-void			ft_init_scene(t_global *mlx_global);
+void			ft_generate_scene(t_global *mlx_global);
 
 /*	my_mlx_utils.c		*/
 void			my_mlx_pixel_put(t_data_img *data_img, int x, int y, int color);
@@ -83,4 +84,5 @@ void			ft_charge_all_img(t_data_mlx *mlx_data);
 /*	my_mlx_utils2.c		*/
 void			ft_close_mlx_img(void *mlx, t_data_img *img);
 void			ft_close_mlx_data(t_data_mlx *mlx_data);
+void			ft_close_all_img(t_data_mlx *mlx_data);
 #endif

@@ -6,7 +6,7 @@
 /*   By: amaroni <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/14 08:47:48 by amaroni           #+#    #+#             */
-/*   Updated: 2022/01/14 09:35:57 by amaroni          ###   ########.fr       */
+/*   Updated: 2022/01/14 15:40:47 by amaroni          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ void	ft_map_to_scene(t_global *mlx_global, char map_element, int x, int y)
 /*
  * Build the game's initial scene
  */
-void	ft_init_scene(t_global *mlx_global)
+void	ft_generate_scene(t_global *mlx_global)
 {
 	char	**array;
 	int		x;

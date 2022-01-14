@@ -6,7 +6,7 @@
 /*   By: amaroni <amaroni@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/08 10:25:36 by amaroni           #+#    #+#             */
-/*   Updated: 2022/01/12 15:09:00 by amaroni          ###   ########.fr       */
+/*   Updated: 2022/01/14 15:49:55 by amaroni          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,11 +32,11 @@ void	ft_close_mlx_img(void *mlx, t_data_img *img)
 }
 
 /*
- * DESTROY AND FREE MLX DATA
+ * Close every single image of mlx_data.
  */
-void	ft_close_mlx_data(t_data_mlx *mlx_data)
+void	ft_close_all_img(t_data_mlx *mlx_data)
 {
-	int	i;
+	int i;
 
 	i = 0;
 	if (!mlx_data)
@@ -47,6 +47,16 @@ void	ft_close_mlx_data(t_data_mlx *mlx_data)
 		mlx_data->img_array[i] = NULL;
 		i++;
 	}
+}
+
+/*
+ * DESTROY AND FREE MLX DATA
+ */
+void	ft_close_mlx_data(t_data_mlx *mlx_data)
+{
+	if (!mlx_data)
+		return ;
+	ft_close_all_img(mlx_data);
 	if (mlx_data->mlx_win)
 		mlx_destroy_window(mlx_data->mlx, mlx_data->mlx_win);
 	if (mlx_data->mlx)

@@ -30,5 +30,5 @@ define pmlxdata
 end
 
 
-b ft_fd_to_str
+b ft_player_move_up
 run

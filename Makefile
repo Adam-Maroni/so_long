@@ -56,3 +56,9 @@ debug: $(LIBFT) $(MINILIBX) $(OBJ)
 test_parsing:
 	(cd tests && ./testParsing.sh)
 
+OS = uname -r
+ifeq ($(OS), 5.4.0-97-generic)
+	#compiler pour linux
+else
+	#compiler pour windows
+endif
