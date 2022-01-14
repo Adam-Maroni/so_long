@@ -6,14 +6,16 @@
 /*   By: amaroni <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/14 08:47:48 by amaroni           #+#    #+#             */
-/*   Updated: 2022/01/14 08:47:55 by amaroni          ###   ########.fr       */
+/*   Updated: 2022/01/14 09:35:57 by amaroni          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
 /*
- * Giventhe map element
+ * char map_element: the character from the map
+ * int x: x coordinate of image
+ * int y: y coordinate of image
  * add the corresponding image to the scene
  */
 void	ft_map_to_scene(t_global *mlx_global, char map_element, int x, int y)
@@ -41,8 +43,7 @@ void	ft_map_to_scene(t_global *mlx_global, char map_element, int x, int y)
 }
 
 /*
- * read map
- * put image at there right position
+ * Build the game's initial scene
  */
 void	ft_init_scene(t_global *mlx_global)
 {

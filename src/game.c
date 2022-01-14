@@ -6,7 +6,7 @@
 /*   By: amaroni <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/11 17:22:21 by amaroni           #+#    #+#             */
-/*   Updated: 2022/01/14 08:51:18 by amaroni          ###   ########.fr       */
+/*   Updated: 2022/01/14 08:54:26 by amaroni          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,9 +53,6 @@ void	ft_start_game(char	**fd_content)
 	int			win_width;
 	int			win_height;
 
-	/* We use asset of 50*50px dimensions
-	 * Thus the following variable adapt the window dimensions to the map dimensions
-	 */
 	win_width = ft_count_colums(fd_content) * SPRITE_PX_DIM;
 	win_height = ft_count_rows(fd_content) * SPRITE_PX_DIM;
 	mlx_data = ft_create_mlx_data(win_width, win_height, "so_long");

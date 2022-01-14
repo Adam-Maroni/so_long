@@ -6,7 +6,7 @@
 /*   By: amaroni <amaroni@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/05 12:40:45 by amaroni           #+#    #+#             */
-/*   Updated: 2022/01/14 08:50:43 by amaroni          ###   ########.fr       */
+/*   Updated: 2022/01/14 08:53:49 by amaroni          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,9 @@
 # include "mlx.h"
 # include "mlx_int.h"
 
+/* The following macro indicate
+ * the standard square dimension of sprites
+ */
 # define SPRITE_PX_DIM 50
 
 typedef struct s_data_img
