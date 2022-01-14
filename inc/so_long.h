@@ -64,14 +64,14 @@ int				ft_count_rows(char **fd_content);
 char			**ft_fd_to_split_lines(int fd_map);
 /*	game.c		*/
 int				ft_exit_game(t_global *mlx_global);
-int				key_hook(int key_code, t_global *mlx_global);
+int				ft_key_hook(int key_code, t_global *mlx_global);
 void			ft_start_game(char **fd_content);
 void			ft_event_handler(t_global *mlx_global);
 t_global		*ft_init_global_struct(char **fd_content,
 					t_data_mlx *mlx_data, int exit_code);
 /*	events_handler.c	*/
 void			ft_player_move_up(t_global *mlx_global);
-int				key_hook(int key_code, t_global *mlx_global);
+int				ft_key_hook(int key_code, t_global *mlx_global);
 void			ft_event_handler(t_global *mlx_global);
 /*	scene.c		*/
 void			ft_map_to_scene(t_global *mlx_global, char map_element,

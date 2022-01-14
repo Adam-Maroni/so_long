@@ -6,7 +6,7 @@
 /*   By: amaroni <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/11 17:22:21 by amaroni           #+#    #+#             */
-/*   Updated: 2022/01/14 18:06:08 by amaroni          ###   ########.fr       */
+/*   Updated: 2022/01/14 19:04:05 by amaroni          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,6 @@ int	ft_exit_game(t_global *mlx_global)
 	free(mlx_global);
 	exit(exit_code);
 }
-
 
 /*
  * Initiate game

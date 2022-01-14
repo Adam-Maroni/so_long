@@ -6,7 +6,7 @@
 /*   By: amaroni <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/14 08:47:48 by amaroni           #+#    #+#             */
-/*   Updated: 2022/01/14 15:40:47 by amaroni          ###   ########.fr       */
+/*   Updated: 2022/01/14 19:12:55 by amaroni          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ void	ft_generate_scene(t_global *mlx_global)
 	char	**array;
 	int		x;
 	int		y;
-	// Pose background
+
 	mlx_put_image_to_window(
 		mlx_global->mlx_data->mlx, mlx_global->mlx_data->mlx_win,
 		mlx_global->mlx_data->img_array[0]->img, 0, 0);
