@@ -6,7 +6,7 @@
 /*   By: amaroni <amaroni@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/05 12:40:45 by amaroni           #+#    #+#             */
-/*   Updated: 2022/01/15 11:12:57 by amaroni          ###   ########.fr       */
+/*   Updated: 2022/01/15 17:51:19 by amaroni          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,10 +18,11 @@
 # include "mlx.h"
 # include "mlx_int.h"
 
-/* The following macro indicate
- * the standard square dimension of sprites
- */
+/* The following macro indicate the standard square dimension of sprites */
 # define SPRITE_PX_DIM 50
+
+/* xpm color code for transparent pixel */
+# define TRANSPARENT_COLOR_CODE 4278190080
 
 typedef struct s_data_img
 {
@@ -75,6 +76,10 @@ void			ft_player_move_up(t_global *mlx_global);
 int				ft_key_hook(int key_code, t_global *mlx_global);
 void			ft_event_handler(t_global *mlx_global);
 /*	scene.c		*/
+void			*ft_get_pixel(t_data_img *img, int x, int y);
+void			ft_handle_transparent_pixel(
+	void *bg_pixel, void *sprite_pixel, unsigned int transparent_color_code);
+void			ft_put_img(t_global *mlx_global, t_data_img *sprite, int x, int y);
 void			ft_map_to_scene(t_global *mlx_global, char map_element,
 					int x, int y);
 void			ft_generate_scene(t_global *mlx_global);
@@ -91,3 +96,15 @@ void			ft_close_mlx_img(void *mlx, t_data_img *img);
 void			ft_close_mlx_data(t_data_mlx *mlx_data);
 void			ft_close_all_img(t_data_mlx *mlx_data);
 #endif
+
+
+
+
+
+
+
+
+
+
+
+
