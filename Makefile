@@ -19,6 +19,7 @@ SRC = $(addprefix $(SRC_PATH)/, \
       scene.c \
       game.c \
       events_handler.c \
+      count.c \
       main.c \
       )
 OBJ_PATH = obj

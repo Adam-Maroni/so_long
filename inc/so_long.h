@@ -6,7 +6,7 @@
 /*   By: amaroni <amaroni@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/05 12:40:45 by amaroni           #+#    #+#             */
-/*   Updated: 2022/01/14 18:05:36 by amaroni          ###   ########.fr       */
+/*   Updated: 2022/01/15 11:12:57 by amaroni          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,6 +62,7 @@ void			ft_free_array(char **array);
 int				ft_count_colums(char **fd_content);
 int				ft_count_rows(char **fd_content);
 char			**ft_fd_to_split_lines(int fd_map);
+int				ft_count_char(char **fd_content, char c);
 /*	game.c		*/
 int				ft_exit_game(t_global *mlx_global);
 int				ft_key_hook(int key_code, t_global *mlx_global);
