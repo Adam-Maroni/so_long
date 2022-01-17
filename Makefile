@@ -34,7 +34,8 @@ $(LIBFT):
 	(cd $(LIBFT_PATH) && make)
 
 $(MINILIBX):
-	(cd $(MINILIBX_PATH) && ./configure)
+	#(cd $(MINILIBX_PATH) && ./configure)
+	make -C $(MINILIBX_PATH)
 	
 $(OBJ_PATH)/%.o : $(SRC_PATH)/%.c
 	$(CC) $(FLAGS) $(addprefix -I, $(INC)) -c $< -o $@ 
