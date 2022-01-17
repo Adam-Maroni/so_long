@@ -6,7 +6,7 @@
 /*   By: amaroni <amaroni@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/15 11:16:06 by amaroni           #+#    #+#             */
-/*   Updated: 2022/01/15 11:16:14 by amaroni          ###   ########.fr       */
+/*   Updated: 2022/01/17 08:02:05 by amaroni          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,5 +65,5 @@ int	ft_count_char(char **fd_content, char c)
 		}
 		x++;
 	}
-	return (rt);	
+	return (rt);
 }

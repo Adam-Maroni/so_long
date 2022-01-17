@@ -6,7 +6,7 @@
 /*   By: amaroni <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/14 08:47:48 by amaroni           #+#    #+#             */
-/*   Updated: 2022/01/15 18:26:51 by amaroni          ###   ########.fr       */
+/*   Updated: 2022/01/17 08:06:31 by amaroni          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,8 +64,8 @@ void	ft_put_img(t_global *mlx_global, t_data_img *sprite, int x, int y)
 		while (relative_y < SPRITE_PX_DIM)
 		{
 			ft_handle_transparent_pixel(
-				ft_get_pixel(bg, x + relative_x, offset_y),
-				ft_get_pixel(sprite, relative_x, relative_y),
+				ft_get_pixel(bg, offset_y, x + relative_x),
+				ft_get_pixel(sprite, relative_y, relative_x),
 				TRANSPARENT_COLOR_CODE);
 			offset_y++;
 			relative_y++;
@@ -85,22 +85,17 @@ void	ft_put_img(t_global *mlx_global, t_data_img *sprite, int x, int y)
 void	ft_map_to_scene(t_global *mlx_global, char map_element, int x, int y)
 {
 	if (map_element == '1')
-		mlx_put_image_to_window(
-			mlx_global->mlx_data->mlx, mlx_global->mlx_data->mlx_win,
-			mlx_global->mlx_data->img_array[1]->img,
-			y * SPRITE_PX_DIM, x * SPRITE_PX_DIM);
+		ft_put_img(mlx_global, mlx_global->mlx_data->img_array[1],
+			x * SPRITE_PX_DIM, y * SPRITE_PX_DIM);
 	if (map_element == 'P')
-		ft_put_img(mlx_global, mlx_global->mlx_data->img_array[2], x * SPRITE_PX_DIM, y * SPRITE_PX_DIM);
+		ft_put_img(mlx_global, mlx_global->mlx_data->img_array[2],
+			x * SPRITE_PX_DIM, y * SPRITE_PX_DIM);
 	if (map_element == 'E')
-		mlx_put_image_to_window(
-			mlx_global->mlx_data->mlx, mlx_global->mlx_data->mlx_win,
-			mlx_global->mlx_data->img_array[3]->img,
-			y * SPRITE_PX_DIM, x * SPRITE_PX_DIM);
+		ft_put_img(mlx_global, mlx_global->mlx_data->img_array[3],
+			x * SPRITE_PX_DIM, y * SPRITE_PX_DIM);
 	if (map_element == 'C')
-		mlx_put_image_to_window(
-			mlx_global->mlx_data->mlx, mlx_global->mlx_data->mlx_win,
-			mlx_global->mlx_data->img_array[4]->img,
-			y * SPRITE_PX_DIM, x * SPRITE_PX_DIM);
+		ft_put_img(mlx_global, mlx_global->mlx_data->img_array[4],
+			x * SPRITE_PX_DIM, y * SPRITE_PX_DIM);
 }
 
 /*
