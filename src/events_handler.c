@@ -6,7 +6,7 @@
 /*   By: amaroni <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/14 18:04:27 by amaroni           #+#    #+#             */
-/*   Updated: 2022/01/15 11:13:55 by amaroni          ###   ########.fr       */
+/*   Updated: 2022/01/17 09:21:01 by amaroni          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,8 @@ void	ft_player_make_a_move(t_global *mlx_global, int x_move, int y_move)
 
 int	ft_key_hook(int key_code, t_global *mlx_global)
 {
-	int	exit_count;
+	static int	move_count = 0;
+	int			exit_count;
 
 	exit_count = ft_count_char(mlx_global->fd_content, 'E');
 	if (key_code == (char) 'w')
@@ -59,9 +60,12 @@ int	ft_key_hook(int key_code, t_global *mlx_global)
 		ft_player_make_a_move(mlx_global, +1, 0);
 	else if (key_code == (char) 'd')
 		ft_player_make_a_move(mlx_global, 0, 1);
+	else if (key_code == 65307)
+		ft_exit_game(mlx_global);
 	else
 		return (0);
-	printf("%c\n", (char)key_code);
+	move_count++;
+	printf("%d\n", move_count);
 	ft_close_all_img(mlx_global->mlx_data);
 	ft_charge_all_img(mlx_global->mlx_data);
 	ft_generate_scene(mlx_global);

@@ -30,6 +30,5 @@ define pmlxdata
 end
 
 
-b scene.c:76
-b scene.c:94
+b ft_key_hook
 run
