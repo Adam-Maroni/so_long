@@ -6,7 +6,7 @@
 /*   By: amaroni <amaroni@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/08 10:25:36 by amaroni           #+#    #+#             */
-/*   Updated: 2022/01/13 09:18:15 by amaroni          ###   ########.fr       */
+/*   Updated: 2022/01/17 13:59:35 by amaroni          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,32 +78,21 @@ t_data_img	*ft_create_new_image(void *mlx, char *xpm_filepath)
 }
 
 /*
- * Add an image to a display
- * index: where the new img should be save.
- * TABlE OF img_array[index];
- * 0 = ocean (do nothing)
- * 1 = '1' (rock)
- * 2 = 'P' (dolphin)
- * 3 = 'E' (pannel)
- * 4 = 'C' (star)
+ * DESTROY AND FREE MLX DATA
  */
-void	ft_add_img(t_data_mlx *mlx_data, t_data_img *new_img, int index)
+void	ft_close_mlx_data(t_data_mlx *mlx_data)
 {
-	if (!mlx_data || !new_img)
+	if (!mlx_data)
 		return ;
-	mlx_data->img_array[index] = new_img;
-}
-
-void	ft_charge_all_img(t_data_mlx *mlx_data)
-{
-	ft_add_img(mlx_data,
-		ft_create_new_image(mlx_data->mlx, "./assets/ocean.xpm"), 0);
-	ft_add_img(mlx_data,
-		ft_create_new_image(mlx_data->mlx, "./assets/rock.xpm"), 1);
-	ft_add_img(mlx_data,
-		ft_create_new_image(mlx_data->mlx, "./assets/dolphin.xpm"), 2);
-	ft_add_img(mlx_data,
-		ft_create_new_image(mlx_data->mlx, "./assets/pannel.xpm"), 3);
-	ft_add_img(mlx_data,
-		ft_create_new_image(mlx_data->mlx, "./assets/starfish.xpm"), 4);
+	ft_close_all_img(mlx_data);
+	if (mlx_data->mlx_win)
+		mlx_destroy_window(mlx_data->mlx, mlx_data->mlx_win);
+	if (mlx_data->mlx)
+	{
+		mlx_destroy_display(mlx_data->mlx);
+		free(mlx_data->mlx);
+	}
+	mlx_data->mlx_win = NULL;
+	mlx_data->mlx = NULL;
+	free(mlx_data);
 }

@@ -30,5 +30,5 @@ define pmlxdata
 end
 
 
-b ft_key_hook
+b ft_create_new_image
 run

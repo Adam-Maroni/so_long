@@ -6,7 +6,7 @@
 /*   By: amaroni <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/14 18:04:27 by amaroni           #+#    #+#             */
-/*   Updated: 2022/01/17 09:21:01 by amaroni          ###   ########.fr       */
+/*   Updated: 2022/01/17 13:40:35 by amaroni          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,7 +67,7 @@ int	ft_key_hook(int key_code, t_global *mlx_global)
 	move_count++;
 	printf("%d\n", move_count);
 	ft_close_all_img(mlx_global->mlx_data);
-	ft_charge_all_img(mlx_global->mlx_data);
+	ft_charge_all_img(mlx_global);
 	ft_generate_scene(mlx_global);
 	if (exit_count != ft_count_char(mlx_global->fd_content, 'E'))
 		ft_exit_game(mlx_global);

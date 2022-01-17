@@ -6,7 +6,7 @@
 /*   By: amaroni <amaroni@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/08 10:25:36 by amaroni           #+#    #+#             */
-/*   Updated: 2022/01/14 19:04:27 by amaroni          ###   ########.fr       */
+/*   Updated: 2022/01/17 13:54:09 by amaroni          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,21 +50,51 @@ void	ft_close_all_img(t_data_mlx *mlx_data)
 }
 
 /*
- * DESTROY AND FREE MLX DATA
+ * Add an image to a display
+ * index: where the new img should be save.
+ * TABlE OF img_array[index];
+ * 0 = ocean (do nothing)
+ * 1 = '1' (rock)
+ * 2 = 'P' (dolphin)
+ * 3 = 'E' (pannel)
+ * 4 = 'C' (star)
  */
-void	ft_close_mlx_data(t_data_mlx *mlx_data)
+void	ft_add_img(t_data_mlx *mlx_data, t_data_img *new_img, int index)
 {
-	if (!mlx_data)
+	if (!mlx_data || !new_img)
 		return ;
-	ft_close_all_img(mlx_data);
-	if (mlx_data->mlx_win)
-		mlx_destroy_window(mlx_data->mlx, mlx_data->mlx_win);
-	if (mlx_data->mlx)
+	mlx_data->img_array[index] = new_img;
+}
+
+/*
+ * Try to create img and add it to mlx_data
+ * if it fails, exit game
+ */
+void	ft_handle_img(t_global *mlx_global, char *img_path, int img_array_id)
+{
+	t_data_img	*img;
+
+	mlx_global->exit_code = 1;
+	if (access(img_path, F_OK) != 0)
 	{
-		mlx_destroy_display(mlx_data->mlx);
-		free(mlx_data->mlx);
+		printf("Error, problem with image :%s\n", img_path);
+		ft_exit_game(mlx_global);
 	}
-	mlx_data->mlx_win = NULL;
-	mlx_data->mlx = NULL;
-	free(mlx_data);
+	img = ft_create_new_image(mlx_global->mlx_data->mlx, img_path);
+	if (!img)
+	{
+		printf("Error, problem with image :%s\n", img_path);
+		ft_exit_game(mlx_global);
+	}
+	ft_add_img(mlx_global->mlx_data, img, img_array_id);
+	mlx_global->exit_code = 0;
+}
+
+void	ft_charge_all_img(t_global *mlx_global)
+{
+	ft_handle_img(mlx_global, "./assets/ocean.xpm", 0);
+	ft_handle_img(mlx_global, "./assets/rock.xpm", 1);
+	ft_handle_img(mlx_global, "./assets/dolphin.xpm", 2);
+	ft_handle_img(mlx_global, "./assets/pannel.xpm", 3);
+	ft_handle_img(mlx_global, "./assets/starfish.xpm", 4);
 }

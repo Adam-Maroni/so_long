@@ -6,7 +6,7 @@
 /*   By: amaroni <amaroni@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/05 12:40:45 by amaroni           #+#    #+#             */
-/*   Updated: 2022/01/17 08:03:51 by amaroni          ###   ########.fr       */
+/*   Updated: 2022/01/17 14:03:49 by amaroni          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,16 +84,17 @@ void			ft_put_img(t_global *mlx_global, t_data_img *sprite,
 void			ft_map_to_scene(t_global *mlx_global, char map_element,
 					int x, int y);
 void			ft_generate_scene(t_global *mlx_global);
-
 /*	my_mlx_utils.c		*/
 void			my_mlx_pixel_put(t_data_img *data_img, int x, int y, int color);
 t_data_mlx		*ft_create_mlx_data(int width, int height, char *title);
 t_data_img		*ft_create_new_image(void *mlx, char *xpm_filepath);
-void			ft_add_img(t_data_mlx *mlx_data, t_data_img *new_img,
-					int index);
-void			ft_charge_all_img(t_data_mlx *mlx_data);
+void			ft_close_mlx_data(t_data_mlx *mlx_data);
 /*	my_mlx_utils2.c		*/
 void			ft_close_mlx_img(void *mlx, t_data_img *img);
-void			ft_close_mlx_data(t_data_mlx *mlx_data);
 void			ft_close_all_img(t_data_mlx *mlx_data);
+void			ft_add_img(t_data_mlx *mlx_data,
+					t_data_img *new_img, int index);
+void			ft_handle_img(t_global *mlx_global,
+					char *img_path, int img_array_id);
+void			ft_charge_all_img(t_global *mlx_global);
 #endif

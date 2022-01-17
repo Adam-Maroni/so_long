@@ -6,7 +6,7 @@
 /*   By: amaroni <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/11 17:22:21 by amaroni           #+#    #+#             */
-/*   Updated: 2022/01/14 19:04:05 by amaroni          ###   ########.fr       */
+/*   Updated: 2022/01/17 13:40:15 by amaroni          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,7 @@ void	ft_start_game(char	**fd_content)
 	win_height = ft_count_rows(fd_content) * SPRITE_PX_DIM;
 	mlx_data = ft_create_mlx_data(win_width, win_height, "so_long");
 	mlx_global = ft_init_global_struct(fd_content, mlx_data, 0);
-	ft_charge_all_img(mlx_data);
+	ft_charge_all_img(mlx_global);
 	ft_generate_scene(mlx_global);
 	ft_event_handler(mlx_global);
 	mlx_loop(mlx_data->mlx);
